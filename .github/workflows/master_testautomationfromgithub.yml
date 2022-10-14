@@ -24,7 +24,11 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
+      - name: Test
+        run: dotnet test --no-build --verbosity normal # <-- this is the current bottom line
 
+      - name: Publish
+        run: dotnet publish SimpleFeedReader/SimpleFeedReader.csproj -c Release -o website
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
